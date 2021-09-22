@@ -3,7 +3,7 @@ docker network create tp-project
 docker network ls
 
 echo 'Mongo Container'
-docker run --name mongodb -v data:/data/db --rm -d --network tp-project mongo
+docker run --name mongodb -v $(pwd)/database-data:/data/db --rm -d --network tp-project mongo
 
 echo 'BE Image and Container'
 cd BE
