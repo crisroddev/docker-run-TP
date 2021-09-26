@@ -53,7 +53,7 @@ echo 'Verify Containers'
 docker ps
 
 echo 'Verify Networks'
-docker network
+docker network ls
 
 echo 'Verify Volumes'
 docker volume ls
