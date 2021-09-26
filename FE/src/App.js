@@ -8,13 +8,14 @@ function App() {
   const [loadedGoals, setLoadedGoals] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const URL='http://localhost:3000';
 
   useEffect(function () {
     async function fetchData() {
       setIsLoading(true);
 
       try {
-        const response = await fetch('http://localhost:8081/goals');
+        const response = await fetch(URL+'/goals');
 
         const resData = await response.json();
 
@@ -39,7 +40,7 @@ function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8081/goals', {
+      const response = await fetch(URL+'/goals', {
         method: 'POST',
         body: JSON.stringify({
           text: goalText,
@@ -78,7 +79,7 @@ function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8081/goals/' + goalId, {
+      const response = await fetch(URL+'/goals/' + goalId, {
         method: 'DELETE',
       });
 
