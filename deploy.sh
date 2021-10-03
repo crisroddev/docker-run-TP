@@ -12,7 +12,7 @@ docker run --name mongodb \
 	-e MONGO_INITDB_ROOT_PASSWORD=secret \
 	-e MONGO_INITDB_DATABASE=course-goals \
 	--restart=always \
-	-d mongo
+	-d mongo:5.0.3-focal
 
 echo 'BE Image and Container'
 cd BE
@@ -42,9 +42,9 @@ cd ..
 echo 'FE container'
 docker run --name fe-container \
 	--network tp-project \
-	-p 8081:3000 \
+	-p 8081:80 \
 	--restart=always \
-	-dit fe
+	-d fe
 
 echo 'Verify images'
 docker images
