@@ -8,7 +8,7 @@ function App() {
   const [loadedGoals, setLoadedGoals] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const URL='http://localhost:3000';
+  const URL='http://192.168.77.240:3000';
 
   useEffect(function () {
     async function fetchData() {
