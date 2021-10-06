@@ -25,8 +25,6 @@ services:
         networks:
             - tp-project
         restart: always
-#        ports:
-#            - "3000:3000"
         depends_on:
             - db
     front-end:
