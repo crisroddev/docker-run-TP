@@ -19,7 +19,7 @@ RUN npm install
 COPY . /app
 
 # Definir variable de entorno para el puerto y exponer el puerto por el que escucha la aplicación
-ENV PORT=8081
+ENV PORT=3000
 EXPOSE $PORT
 
 # Ejecutar el proceso dentro del contenedor

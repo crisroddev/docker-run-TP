@@ -27,7 +27,7 @@ echo 'BE container'
 docker run --name be-container \
 	--network tp-project \
 	-e MONGO_HOST=root:secret@mongodb -e MONGO_DB=course-goals \
-	-p 3000:8081 \
+	-p 3000:3000 \
 	--restart=always \
 	-d be
 

@@ -1,0 +1,47 @@
+version: "3.3"
+
+services:
+    db:
+        image: mongo:5.0.3-focal
+        container_name: mongodb
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=root
+            - MONGO_INITDB_ROOT_PASSWORD=secret
+            - MONGO_INITDB_DATABASE=course-goals 
+        networks:
+            - tp-project
+        restart: always
+        volumes:
+            - "./database-data:/data/db"
+            - "./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro"
+    back-end:
+        container_name: be
+        build:
+            context: ./BE/
+            dockerfile: Dockerfile
+        environment:
+            - MONGO_HOST=root:secret@mongodb
+            - MONGO_DB=course-goals
+        networks:
+            - tp-project
+        restart: always
+#        ports:
+#            - "3000:3000"
+        depends_on:
+            - db
+    front-end:
+        container_name: fe
+        build:
+            context: ./FE/
+            dockerfile: Dockerfile
+        networks:
+            - tp-project
+        restart: always
+        ports:
+            - "8081:80"
+        depends_on:
+            - db
+            - back-end
+networks:
+    tp-project:
+        driver: bridge

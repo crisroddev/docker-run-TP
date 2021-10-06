@@ -30,6 +30,9 @@ version="1.0"
 # Copiar codigo estatico
 COPY --from=build-stage /app/build /usr/share/nginx/html
 
+# Copiar nginx.conf para generar proxy inverso
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 # Definir variable de entorno para el puerto y exponer el puerto por el que escucha la aplicación
 ENV PORT=80
 EXPOSE $PORT
