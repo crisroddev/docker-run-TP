@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
     db:
-        image: mongo:5.0.3-focal
+        image: harbor.tallerdevops.com/grupo-2/mongo:5.0.3-focal
         container_name: mongodb
         environment:
             - MONGO_INITDB_ROOT_USERNAME=root
@@ -12,8 +12,12 @@ services:
             - tp-project
         restart: always
         volumes:
-            - "./database-data:/data/db"
-            - "./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro"
+            - type: bind
+              source: ./database-data
+              target: /data/db
+            - type: bind
+              source: ./mongo-init.js
+              target: /docker-entrypoint-initdb.d/mongo-init.js:ro
     back-end:
         container_name: be
         build:
