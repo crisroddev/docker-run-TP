@@ -1,5 +1,5 @@
-__Run__
-docker-compose up --build -d
+##### Run
+```docker-compose up --build -d```
 
-__Stop__
-docker-compose down
+##### Stop
+```docker-compose down```
