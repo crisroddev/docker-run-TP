@@ -17,7 +17,7 @@ services:
               target: /data/db
             - type: bind
               source: ./mongo-init.js
-              target: /docker-entrypoint-initdb.d/mongo-init.js:ro
+              target: /docker-entrypoint-initdb.d/mongo-init.js
     back-end:
         container_name: be
         build:
